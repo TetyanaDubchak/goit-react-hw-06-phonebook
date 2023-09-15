@@ -5,8 +5,8 @@ export const addContact = (name, number) => {
     type: "contacts/addContact",
     payload: {
       id: nanoid(),
-      name: '',
-      number:'',
+      name: name,
+      number:number,
     },
   };
 };
