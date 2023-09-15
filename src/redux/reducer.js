@@ -7,7 +7,7 @@ const contactsInitialState = [
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const contactsReducer = (state = contactsInitialState, action) => {
+export const contactsReducer = (state = contactsInitialState, action) => {
     switch (action.type) {
         case 'contacts/addContact':
             return [...state, action.payload];
@@ -23,7 +23,7 @@ const contactsReducer = (state = contactsInitialState, action) => {
 
 const filtersInitialState = '';
 
-const filtersReducer = (state = filtersInitialState, action) => {
+export const filtersReducer = (state = filtersInitialState, action) => {
   switch (action.type) {
     case "filters/setFilter":
       return  action.payload.toLowerCase();
@@ -32,7 +32,7 @@ const filtersReducer = (state = filtersInitialState, action) => {
   }
 };
 
-export const rootReducer = combineReducers({
-    contacts: contactsReducer,
-    filters: filtersReducer,
-})
+// export const rootReducer = combineReducers({
+//     contacts: contactsReducer,
+//     filters: filtersReducer,
+// })

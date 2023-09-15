@@ -1,6 +1,5 @@
-import { createStore } from "redux";
-import { devToolsEnhancer } from "@redux-devtools/extension";
-import { rootReducer } from "./reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import { contactsReducer, filtersReducer } from "./reducer";
 // const initialState = {
 //   contacts: [
 //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -16,5 +15,9 @@ import { rootReducer } from "./reducer";
 //   return state;
 // };
 // Створюємо розширення стора, щоб додати інструменти розробника
-const enhancer = devToolsEnhancer();
-export const store = createStore(rootReducer, enhancer);
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+    filters: filtersReducer,
+  } 
+});
