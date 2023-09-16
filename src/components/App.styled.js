@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
     width: 500px;
+    min-height: 800px;
     padding: 30px;
     margin-right:auto;
     margin-left:auto;
