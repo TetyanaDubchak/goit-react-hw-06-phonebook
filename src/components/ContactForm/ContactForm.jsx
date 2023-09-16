@@ -2,8 +2,8 @@ import { Formik } from 'formik';
 import { StyledForm, StyledError, Button,Label,Input } from "./ContactForm.styled";
 import * as Yup from 'yup';
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/actions";
-import { nanoid } from 'nanoid'
+import { addContact } from "../../redux/contactsSlice";
+// import { nanoid } from 'nanoid'
 
 const phoneValidation = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
