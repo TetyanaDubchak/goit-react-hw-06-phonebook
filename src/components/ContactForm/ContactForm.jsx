@@ -1,9 +1,9 @@
 import { Formik } from 'formik';
 import { StyledForm, StyledError, Button,Label,Input } from "./ContactForm.styled";
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
-
+import { getContacts } from "../../redux/selectors";
 
 const phoneValidation = /^((\+[1-9]{1,4}[-]*)|(\([0-9]{2,3}\)[-]*)|([0-9]{2,4})[-]*)*?[0-9]{3,4}?[-]*[0-9]{3,4}?$/;
 
@@ -19,7 +19,9 @@ const phoneValidation = /^((\+[1-9]{1,4}[-]*)|(\([0-9]{2,3}\)[-]*)|([0-9]{2,4})[
  });
 
 export const ContactForm = () => {
-    const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  console.log(contacts);
 
     return (
         <Formik
@@ -29,7 +31,13 @@ export const ContactForm = () => {
             }}
         validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
-            dispatch(addContact(values.name, values.number));
+          const contactExists = contacts.some(contact => contact.name.toLowerCase() === values.name.toLowerCase());
+            if (contactExists) {
+              alert(`${values.name} is already in contacts`);
+              // actions.resetForm();
+            } else {
+               dispatch(addContact(values.name, values.number));
+            }
             actions.resetForm()
       }}
     >

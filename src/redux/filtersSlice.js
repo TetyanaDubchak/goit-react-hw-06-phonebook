@@ -11,11 +11,6 @@ const filtersSlice = createSlice({
                 return action.payload.toLowerCase();
             },
         },
-        prepare(name) {
-            return {
-            payload: name,
-            };
-        },
     }
 })
 
