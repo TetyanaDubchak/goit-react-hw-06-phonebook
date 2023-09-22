@@ -10,7 +10,7 @@ export const ContactList = () => {
     const dispatch = useDispatch();
 
     const filteredList = () => {
-       return contacts.filter(contact => contact.name.toLowerCase().includes(filters))
+       return contacts.filter(contact => contact.name.toLowerCase().includes(filters.toLowerCase()))
     }
 
     const filteredContacts = filteredList()
